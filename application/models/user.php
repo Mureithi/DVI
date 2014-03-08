@@ -47,8 +47,8 @@ class User extends Doctrine_Record {
 		return $count[0] -> Total_Users;
 	}
 
-	public function getPagedUsers($offset, $items) {
-		$query = Doctrine_Query::create() -> select("*") -> from("User") -> orderBy("Full_Name") -> offset($offset) -> limit($items);
+	public function getPagedUsers() {
+		$query = Doctrine_Query::create() -> select("*") -> from("User") -> orderBy("Full_Name") ;
 		$users = $query -> execute();
 		return $users;
 	}

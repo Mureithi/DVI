@@ -25,7 +25,7 @@ class Months_Of_Stock extends MY_Controller {
 		$date = date("m/d/Y");
 		$months_required = array();
 		$chart = '
-<chart showLegend="0" bgColor="FFFFFF" showBorder="0" plotGradientColor="" showAlternateHGridColor="0" divLineAlpha="10" decimals="2" caption="' . $title . '" xAxisName="Antigen" yAxisName="Months of Stock" showValues="1" decimals="0" formatNumberScale="0" clickURL="' . base_url() . 'disbursement_management/drill_down/2/0">';
+<chart showLegend="0" bgColor="FFFFFF" showBorder="0" plotGradientColor="" useroundedges="1"  showAlternateHGridColor="0" divLineAlpha="10" decimals="2" caption="' . $title . '" xAxisName="Antigen" yAxisName="Months of Stock" showValues="1" decimals="0" formatNumberScale="0" clickURL="' . base_url() . 'disbursement_management/drill_down/2/0">';
 		$chart .= "<categories>";
 		foreach ($vaccines as $vaccine_object) {
 			$chart .= '<category label="' . $vaccine_object -> Name . '"/>';
@@ -57,7 +57,7 @@ class Months_Of_Stock extends MY_Controller {
 			$months_required[$vaccine_object -> id] = $months_till_shipment;
 
 		}
-		$chart .= '<dataset seriesName="MOS" color="000000" showValues="1">';
+		$chart .= '<dataset seriesName="MOS" color="000000" showValues="1" >';
 		$year = date('Y');
 		$population = 0;
 		if ($national > 0) {

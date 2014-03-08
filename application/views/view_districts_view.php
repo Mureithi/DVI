@@ -1,15 +1,26 @@
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>DataTables/media/js/jquery.dataTables.js"></script>
+
+		
+		<style type="text/css" title="currentStyle">
+
+			@import "<?php echo base_url(); ?>DataTables/media/css/jquery.dataTables.css";
+			
+		</style>
+<script>
+	
+	$(document).ready(function() {
+    $('#example').dataTable();
+} );
+</script>
+<div class="container">
 <div class="quick_menu">
 <a class="quick_menu_link" href="<?php echo site_url("district_management/add");?>">New District</a>
 </div>
-<?php if (isset($pagination)):
-?>
-<div style="width:450px; margin:0 auto 60px auto">
-	<?php echo $pagination;?>
-</div>
-<?php endif;?>
-<table border="0" class="data-table">
-	<th class="subsection-title" colspan="11">Districts</th>
-	<tr>
+
+<table id="example" class="display table table-striped" cellspacing="0" width="100%">
+	
+	<thead>
+        <tr>
 		<th>Name</th>
 		<th>Province</th>
 		<th>Latitude</th>
@@ -17,6 +28,20 @@
 		<th>Disabled?</th>
 		<th>Action</th>
 	</tr>
+    </thead>
+ 
+    <tfoot>
+        <tr>
+		<th>Name</th>
+		<th>Province</th>
+		<th>Latitude</th>
+		<th>Longitude</th>
+		<th>Disabled?</th>
+		<th>Action</th>
+	</tr>
+    </tfoot>
+	<tbody>
+	
 	<?php
 foreach($districts as $district){
 	?>
@@ -39,10 +64,6 @@ if($district->disabled == 0){
 		<a class="link" style="color:green" href="<?php echo base_url()."district_management/change_availability/".$district->id."/0"?>">Enable</a><?php }?></td>
 	</tr>
 	<?php }?>
+	</tbody>
 </table>
-<?php if (isset($pagination)):
-?>
-<div style="width:450px; margin:0 auto 60px auto">
-	<?php echo $pagination;?>
 </div>
-<?php endif;?>

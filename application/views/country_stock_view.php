@@ -156,17 +156,18 @@ $(".vaccine_map").click(function(){
 
     //]]>
 </script> 
+<div class="container">
 <div id="summaries"> 
 
 
-<div id="notification_panel">
-<div id="notification_panel_image"></div>
-<div id="notification_panel_text">
-Values in <b style="color:red">RED</b> indicate vaccine levels that will <b>NOT</b> last the store for at least a <b>MONTH</b>
-</div>
-</div> 
 
-<table border="0" class="data-table" style="margin:0 auto 0 auto;">
+
+<p class="bg-info" style="padding: 15px;">
+Values in <b style="color:red">RED</b> indicate vaccine levels that will <b>NOT</b> last the store for at least a <b>MONTH</b>
+</p>
+
+
+<table border="0" class="display table table-striped table-bordered" style="margin:0 auto 0 auto;">
 <tr>
 <th rowspan="2">Store</th>
 <th colspan = "<?php echo count($vaccines);?>">Vaccine</th>
@@ -236,6 +237,7 @@ foreach($vaccines as $vaccine){?>
 ?>
 </tr>
 </table> 
+</div>
 </div>
 <style type="text/css">
 label,input {

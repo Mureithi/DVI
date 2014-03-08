@@ -325,7 +325,7 @@ input.button {
     text-decoration: none;
     color: #000000;
     margin-right: 2px;
-	width:100px;
+	
 }
 
 .top_menu_active{ 
@@ -386,12 +386,18 @@ input.button {
 .delete{
 	cursor:pointer;
 }
-@media all and (max-width: 520px) and (min-width: 320px) {
+@media all and (max-width: 720px) and (min-width: 320px) {
   #top_panel {
     width: auto;
 	height: auto;
 	margin:auto;
 	text-align:center;
+  }
+ 
+}
+@media all and (max-width: 1025px) and (min-width: 720px) {
+  #submenu {
+    margin-top:11% !important;
   }
  
 }

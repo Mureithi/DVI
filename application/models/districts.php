@@ -51,8 +51,8 @@ class Districts extends Doctrine_Record {
 		return $count[0] -> Total_Districts;
 	}
 
-	public function getPagedDistricts($offset, $items) {
-		$query = Doctrine_Query::create() -> select("id,name,province,latitude,longitude,disabled") -> from("Districts") -> orderBy("name") -> offset($offset) -> limit($items);
+	public function getPagedDistricts( ){
+		$query = Doctrine_Query::create() -> select("id,name,province,latitude,longitude,disabled") -> from("Districts") -> orderBy("name") ;
 		$districts = $query -> execute();
 		return $districts;
 	}

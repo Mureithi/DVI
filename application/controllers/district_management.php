@@ -11,11 +11,11 @@ class District_Management extends MY_Controller {
 		$this -> view_list();
 	}
 
-	public function view_list($offset = 0) {
-		$items_per_page = 20;
-		$number_of_districts = Districts::getTotalNumber();
-		$districts = Districts::getPagedDistricts($offset, $items_per_page);
-		if ($number_of_districts > $items_per_page) {
+	public function view_list() {
+		//$items_per_page = 20;
+		//$number_of_districts = Districts::getTotalNumber();
+		$districts = Districts::getPagedDistricts();
+		/*if ($number_of_districts > $items_per_page) {
 			$config['base_url'] = base_url() . "district_management/view_list/";
 			$config['total_rows'] = $number_of_districts;
 			$config['per_page'] = $items_per_page;
@@ -24,7 +24,7 @@ class District_Management extends MY_Controller {
 			$this -> pagination -> initialize($config);
 			$data['pagination'] = $this -> pagination -> create_links();
 		}
-
+*/
 		$data['districts'] = $districts;
 		$data['title'] = "District Management::All My Districts";
 		$data['module_view'] = "view_districts_view";

@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 var url = "";
 $(function() {
@@ -61,6 +62,7 @@ function showPlanGraph(year, vaccine){
 }
 
 </script>
+<div class="container">
 <div title="Confirm Delete!" id="confirm_delete" style="width: 300px; height: 150px; margin: 5px auto 5px auto;">
 Are you sure you want to delete this record?
 </div>
@@ -74,17 +76,21 @@ $(function() {
 $("#vaccine_<?php echo $paged_vaccine;?>").click();
 }); 
 </script>
+
 <?php }
 
-foreach($vaccines as $vaccine){?>
+foreach($vaccines as $vaccine){
+	//echo $vaccine->id;
+	?>
 <div id="<?php echo $vaccine->id?>">
 	<a class="link" href="batch_management/provisional_plan/<?php echo $vaccine->id;?>" >Modify <?php echo date('Y');?> Provisional Plan For <?php echo $vaccine->Name;?> </a>
 	<span style="font-size: 16px; margin:0 10px;">or</span>
 	<a class="link view_plan_graph" vaccine = "<?php echo $vaccine->id;?>" current_year = "<?php echo date('Y');?>" >View How <?php echo $vaccine->Name;?> Receipts have gone according to plan </a>
-<table border="0" class="data-table">
-<th class="subsection-title" colspan="9">Received Stock For <?php echo $vaccine->Name?> </th>
-	<tr>
-		<th>Batch Number</th>
+<table id="<?php echo "table".$vaccine->id;?>" class="display table table-striped" cellspacing="0" width="100%">
+	
+	<thead>
+        <tr>
+        <th>Batch Number</th>
 		<th>Expiry Date</th>
 		<th>Manufacturing Date</th>
 		<th>Manufacturer</th>
@@ -93,7 +99,23 @@ foreach($vaccines as $vaccine){?>
 		<th>Quantity</th>
 		<th>Added By</th>
 		<th>Action</th>
-	</tr>
+        </tr>
+    </thead>
+ 
+    <tfoot>
+        <tr>
+        <th>Batch Number</th>
+		<th>Expiry Date</th>
+		<th>Manufacturing Date</th>
+		<th>Manufacturer</th>
+		<th>PO Number</th>
+		<th>Arrival Date</th>
+		<th>Quantity</th>
+		<th>Added By</th>
+		<th>Action</th>
+        </tr>
+    </tfoot>
+	<tbody>
 <?php 
 $vaccine_batches = $batches[$vaccine->id];;
 foreach($vaccine_batches as $batch){?>
@@ -112,8 +134,9 @@ foreach($vaccine_batches as $batch){?>
 	</tr>
 <?php }
 ?>
+</tbody>
 </table>
-<table border="0" class="data-table">
+<table class="table table-striped">
 <th class="subsection-title" colspan="9"><?php echo date('Y');?> Provisional Plan For <?php echo $vaccine->Name?> </th>
 	<tr>
 		<th>Date</th>
@@ -129,7 +152,9 @@ foreach($plans as $plan){?>
 	</tr>
 <?php }
 ?>
+
 </table>
+
 <?php if (isset($pagination[$vaccine->id])): ?>
 <div style="width:450px; margin:0 auto 60px auto">
 <?php echo $pagination[$vaccine->id]; ?>
@@ -155,5 +180,5 @@ foreach($plans as $plan){?>
 
 <?php }
 ?>
-
+</div>
  

@@ -23,19 +23,19 @@ class Batch_Management extends MY_Controller {
 	}
 
 	public function view_batches($paged_vaccine = null, $offset = 0) {
-		$default_offset = 0;
+		//$default_offset = 0;
 		$data['title'] = "Stock Management::All Batches";
 		$data['content_view'] = "view_batches_view";
 		$vaccines = Vaccines::getAll_Minified();
 		$vaccine_plans = array();
-		$items_per_page = 20;
+		//$items_per_page = 20;
 		foreach ($vaccines as $vaccine) {
 			//skip the vaccine that is currently being browsed through
 			if ($vaccine -> id == $paged_vaccine) {
 				continue;
 			}
 			$total_number = Batches::getTotalNumber($vaccine -> id);
-			if ($total_number > $items_per_page) {
+			/*if ($total_number > $items_per_page) {
 				$config['base_url'] = base_url() . "batch_management/view_batches/" . $vaccine -> id;
 				$config['total_rows'] = $total_number;
 				$config['per_page'] = $items_per_page;
@@ -43,10 +43,10 @@ class Batch_Management extends MY_Controller {
 				$config['num_links'] = 5;
 				$this -> pagination -> initialize($config);
 				$data['pagination'][$vaccine -> id] = $this -> pagination -> create_links();
-			}
+			}*/
 			$vaccine_plans[$vaccine -> id] = Provisional_Plan::getCurrentPlan($vaccine -> id);
 			$batch_years[$vaccine -> id] = Batches::getDistinctYears($vaccine -> id);
-			$batches[$vaccine -> id] = Batches::getVaccineBatches($vaccine -> id, $default_offset, $items_per_page);
+			$batches[$vaccine -> id] = Batches::getVaccineBatches($vaccine -> id );
 		}
 		//
 		
@@ -58,7 +58,7 @@ class Batch_Management extends MY_Controller {
 			$data['paged_vaccine'] = $paged_vaccine;
 			$total_number = Batches::getTotalNumber($paged_vaccine);
 
-			if ($total_number > $items_per_page) {
+		/*	if ($total_number > $items_per_page) {
 				$config['base_url'] = base_url() . "batch_management/view_batches/" . $paged_vaccine;
 				$config['total_rows'] = $total_number;
 				$config['per_page'] = $items_per_page;
@@ -68,10 +68,10 @@ class Batch_Management extends MY_Controller {
 				$data['pagination'][$paged_vaccine] = $this -> pagination -> create_links();
 				 
 				 
-			}
+			}*/
 			$vaccine_plans[$paged_vaccine] = Provisional_Plan::getCurrentPlan($paged_vaccine);
 			$batch_years[$paged_vaccine] = Batches::getDistinctYears($paged_vaccine);
-			$batches[$paged_vaccine] = Batches::getVaccineBatches($paged_vaccine, $offset, $items_per_page);
+			$batches[$paged_vaccine] = Batches::getVaccineBatches($paged_vaccine);
 
 		}
 		

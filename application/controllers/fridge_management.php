@@ -10,11 +10,11 @@ class Fridge_Management extends MY_Controller {
 		$this -> listing();
 	}
 
-	public function listing($offset = 0) {
-		$items_per_page = 20;
-		$number_of_fridges = Fridges::getTotalNumber();
-		$fridges = Fridges::getPagedFridges($offset, $items_per_page);
-		if ($number_of_fridges > $items_per_page) {
+	public function listing() {
+		//$items_per_page = 20;
+		//$number_of_fridges = Fridges::getTotalNumber();
+		$fridges = Fridges::getPagedFridges();
+		/*if ($number_of_fridges > $items_per_page) {
 			$config['base_url'] = base_url() . "fridge_management/listing/";
 			$config['total_rows'] = $number_of_fridges;
 			$config['per_page'] = $items_per_page;
@@ -22,7 +22,7 @@ class Fridge_Management extends MY_Controller {
 			$config['num_links'] = 5;
 			$this -> pagination -> initialize($config);
 			$data['pagination'] = $this -> pagination -> create_links();
-		}
+		}*/
 
 		$data['fridges'] = $fridges;
 		$data['title'] = "Fridge Management::All Fridge";

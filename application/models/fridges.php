@@ -35,8 +35,8 @@ class Fridges extends Doctrine_Record {
 		return $count[0] -> Total_Fridges;
 	}
 
-	public function getPagedFridges($offset, $items) {
-		$query = Doctrine_Query::create() -> select("*") -> from("Fridges") -> orderBy("Model_Name") -> offset($offset) -> limit($items);
+	public function getPagedFridges() {
+		$query = Doctrine_Query::create() -> select("*") -> from("Fridges") -> orderBy("Model_Name") ;
 		$fridges = $query -> execute();
 		return $fridges;
 	}

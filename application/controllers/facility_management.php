@@ -11,10 +11,10 @@ class Facility_Management extends MY_Controller {
 	}
 
 	public function whole_list($offset = 0) {
-		$items_per_page = 20;
-		$number_of_facilities = Facilities::getTotalNumber();
-		$facilities = Facilities::getPagedFacilities($offset, $items_per_page);
-		if ($number_of_facilities > $items_per_page) {
+		//$items_per_page = 20;
+		//$number_of_facilities = Facilities::getTotalNumber();
+		$facilities = Facilities::getPagedFacilities();
+		/*if ($number_of_facilities > $items_per_page) {
 			$config['base_url'] = base_url() . "facility_management/whole_list/";
 			$config['total_rows'] = $number_of_facilities;
 			$config['per_page'] = $items_per_page;
@@ -22,7 +22,7 @@ class Facility_Management extends MY_Controller {
 			$config['num_links'] = 5;
 			$this -> pagination -> initialize($config);
 			$data['pagination'] = $this -> pagination -> create_links();
-		}
+		}*/
 
 		$data['facilities'] = $facilities;
 		$data['title'] = "Facility Management::All Facilities";
@@ -30,12 +30,12 @@ class Facility_Management extends MY_Controller {
 		$this -> new_base_params($data);
 	}
 
-	public function district_list($offset = 0) {
-		$district = $this -> session -> userdata("district_province_id");
-		$items_per_page = 20;
-		$number_of_facilities = Facilities::getTotalNumber($district);
-		$facilities = Facilities::getPagedFacilities($offset, $items_per_page, $district);
-		if ($number_of_facilities > $items_per_page) {
+	public function district_list() {
+		//$district = $this -> session -> userdata("district_province_id");
+		//$items_per_page = 20;
+		//$number_of_facilities = Facilities::getTotalNumber($district);
+		$facilities = Facilities::getPagedFacilities($district);
+		/*if ($number_of_facilities > $items_per_page) {
 			$config['base_url'] = base_url() . "facility_management/district_list/";
 			$config['total_rows'] = $number_of_facilities;
 			$config['per_page'] = $items_per_page;
@@ -44,7 +44,7 @@ class Facility_Management extends MY_Controller {
 			$this -> pagination -> initialize($config);
 			$data['pagination'] = $this -> pagination -> create_links();
 		}
-
+*/
 		$data['facilities'] = $facilities;
 		$data['title'] = "Facility Management::All Facilities";
 		$data['content_view'] = "view_district_facilities";

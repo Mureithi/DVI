@@ -33,27 +33,27 @@
 		});
 			
 		//start with the mos graph
-		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionCharts/Charts/MSColumn2D.swf"?>", "ChartId", "460", "300", "0", "0");
+		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionCharts/Charts/MSColumn2D.swf"?>", "ChartId", "100%", "300", "0", "0");
 		var url = '<?php echo base_url()."months_of_stock/get_mos_balance/1/0/0"?>'; 
 		chart.setDataURL(url);
 		chart.render("mos_forecast");
 		//then the cold chain graph
-		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionCharts/Charts/StackedBar2D.swf"?>", "ChartId", "370", "300", "0", "0");
+		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionCharts/Charts/StackedBar2D.swf"?>", "ChartId", "100%", "300", "0", "0");
 		var url = '<?php echo base_url()."cold_chain/get_utilization/1/0/0"?>'; 
 		chart.setDataURL(url);
 		chart.render("cold_chain");
 		//get the % occupied in the fridge
-		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionWidgets/Charts/Cylinder.swf"?>", "ChartId", "310", "300", "0", "0"); 
+		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionWidgets/Charts/Cylinder.swf"?>", "ChartId", "100%", "300", "0", "0"); 
 		var url = '<?php echo base_url()."cold_chain/get_fridge_occupancy/1/0/0"?>'; 
 		chart.setDataURL(url);
 		chart.render("fridge_occupancy");
 		//get the % occupied in the fridge
-		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionWidgets/Charts/Cylinder.swf"?>", "ChartId", "100", "300", "0", "0"); 
+		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionWidgets/Charts/Cylinder.swf"?>", "ChartId", "100%", "300", "0", "0"); 
 		var url = '<?php echo base_url()."cold_chain/get_freezer_occupancy/1/0/0"?>';  
 		chart.setDataURL(url);
 		chart.render("freezer_occupancy");
 		//get the trend of mos for different antigens
-		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionCharts/Charts/MSLine.swf"?>", "ChartId", "400", "300", "0", "0"); 
+		var chart = new FusionCharts("<?php echo base_url()."Scripts/FusionCharts/Charts/MSLine.swf"?>", "ChartId", "100%", "300", "0", "0"); 
 		var url = '<?php echo base_url()."mos_trend/get/0/0/1/0/0"?>';  
 		chart.setDataURL(url);
 		chart.render("mos_trend");
@@ -181,15 +181,15 @@
 		margin-top: 5px;
 	}
 </style>
-
+<div class="container">
 <a class="link" style="margin-left:5px;" href="<?php echo site_url('home_controller/dashboard')?>">View Tabular Stock Status</a>
-<div class="top_graphs_container">
 
-<div class="graph">
-<div class="larger_graph">
-	<a class="link view_larger_graph" href="#" id="mos_graph">Enlarge</a> | <a class="link" href="<?php echo base_url().'months_of_stock/download/1/0/0';?>">Download Data</a>
-</div>
-<div id="mos_legend">
+
+<div class="row"><!-- Begin row 1 to hold first 2 graphs -->
+	<div class="col-md-6 col-xs-12"><!-- Begin column to hold first graph -->
+		<div class="row">
+		<div class="col-md-6">
+			<div id="mos_legend">
 	<div style="width:20px; height:20px; background-color: #E60000;float:left"></div>
 	<div style="float:left; padding:5px;">Order Now </div>
 	<div style="width:20px; height:20px; background-color: #F6BD0F;float:left"></div>
@@ -197,32 +197,76 @@
 	<div style="width:20px; height:20px; background-color: #3DE600;float:left"></div>
 	<div style="float:left; padding:5px;">Sufficient</div>
 </div>
-<div id = "mos_forecast" title="Months of Stock" ></div>
-</div>
-<div class="graph" style="width: 370px;">
+
+		</div>
+		
+		
+		<div class="col-md-6">
+			<div class="larger_graph">
+	<a class="link view_larger_graph" href="#" id="mos_graph">Enlarge</a> | <a class="link" href="<?php echo base_url().'months_of_stock/download/1/0/0';?>">Download Data</a>
+			</div>
+			
+		</div>
+
+
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id = "mos_forecast" title="Months of Stock" ></div>
+		</div>
+	</div>
+	</div>
+	
+	<div class="col-md-6">
+		
 <div class="larger_graph">
 	<a class="link view_larger_graph" id="cold_chain_graph">Enlarge</a> |<a class="link" href="<?php echo base_url().'cold_chain/download/1/0/0';?>">Download Data</a>
 </div>
 <div id = "cold_chain" title="Cold Chain Utilization"  style="margin-top: 30px;"></div>
+
+	</div>
 </div>
-<div class="graph" style="width: 310px;"> 
+
+
+<div class="row"><!-- Begin row 2 to hold other 2 graphs -->
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-6"></div>
+			<div class="col-md-6">
+				<div class="larger_graph"><a class="link" href="<?php echo base_url().'cold_chain/download/1/0/0';?>">Download Data</a></div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+			
 <div id = "fridge_occupancy" title="Fridge Occupancy"></div>
+
 </div>
-<div class="graph" style="width: 100px; margin-top: -5px; margin-left: -10px;">
-<div class="larger_graph">
-<a class="link" href="<?php echo base_url().'cold_chain/download/1/0/0';?>">Download Data</a>
-</div>
+		<div class="col-md-6">
+			
+			
 <div id = "freezer_occupancy" title="Fridge Occupancy"></div>
-</div>
+		</div>
+		</div>
+		
+
+
+
+	</div>
+	<div class="col-md-6">
+		
+		
 <div class="graph" style="width: 350px; margin-left: 50px;">
 <div class="larger_graph" style="margin-top: -20px;">
 	<a class="link view_larger_graph" id="mos_trend_graph">View More</a> | <a class="link" href="<?php echo base_url().'mos_trend/download_mos_trend/0/1/0/0';?>">Download Data</a>
 </div>
 <div id = "mos_trend" title="Antigen MOS Trend"  style="margin-top: 0px;"></div>
 </div>
-
-
+	</div>
 </div>
+
+
 <div id="larger_graph_container"></div>
 <div id="mos_larger_graph_container">
 <div id="mos_larger_graph"></div>
@@ -348,5 +392,6 @@
 	<div class="legend_content"> 
 	<div style="float:left; padding:5px;"><b>Point below the line: </b> Consumption &lt; Forecast</div></div>
 
+</div>
 </div>
 </div>

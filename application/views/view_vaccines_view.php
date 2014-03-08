@@ -1,18 +1,48 @@
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>DataTables/media/js/jquery.dataTables.js"></script>
+
+		
+		<style type="text/css" title="currentStyle">
+
+			@import "<?php echo base_url(); ?>DataTables/media/css/jquery.dataTables.css";
+			
+		</style>
+<script>
+	
+	$(document).ready(function() {
+    $('#example').dataTable();
+} );
+</script>
 <div class="quick_menu">
 	<a class="quick_menu_link" href="<?php echo site_url("vaccine_management/new_vaccine");?>">New Vaccine</a>
 </div>
 <div id="BCG">
-	<table border="0" class="data-table">
-		<th class="subsection-title" colspan="11">Vaccines List</th>
-		<tr>
-			<th>Name</th>
+	<table  id="example" class="display table table-striped" cellspacing="0" width="100%">
+	<!--	<th class="subsection-title" colspan="11">Vaccines List</th>-->
+		
+		<thead>
+        <tr>
+            <th>Name</th>
 			<th>Doses Required</th>
 			<th>Wastage Factor</th>
 			<th>Tray Color</th>
 			<th>Added By</th>
 			<th>Date Added</th>
 			<th>Action</th>
-		</tr>
+        </tr>
+    </thead>
+ 
+    <tfoot>
+        <tr>
+            <th>Name</th>
+			<th>Doses Required</th>
+			<th>Wastage Factor</th>
+			<th>Tray Color</th>
+			<th>Added By</th>
+			<th>Date Added</th>
+			<th>Action</th>
+        </tr>
+    </tfoot>
+	<tbody>
 		<?php
 foreach($vaccines as $vaccine){
 		?>
@@ -37,5 +67,6 @@ if($vaccine->Active == 1){
 			<a class="link" style="color:green" href="<?php echo base_url()."vaccine_management/change_availability/".$vaccine->id."/1"?>">Enable</a><?php }?></td>
 		</tr>
 		<?php }?>
+		</tbody>
 	</table>
 </div>

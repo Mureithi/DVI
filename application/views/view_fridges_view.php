@@ -1,14 +1,26 @@
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>DataTables/media/js/jquery.dataTables.js"></script>
+
+		
+		<style type="text/css" title="currentStyle">
+
+			@import "<?php echo base_url(); ?>DataTables/media/css/jquery.dataTables.css";
+			
+		</style>
+<script>
+	
+	$(document).ready(function() {
+    $('#example').dataTable();
+} );
+</script>
+<div class="container">
  <div class="quick_menu">
 <a class="quick_menu_link" href="<?php echo site_url("fridge_management/add");?>">New Fridge</a>
 </div>
-<?php if (isset($pagination)): ?>
-<div style="width:450px; margin:0 auto 60px auto">
-<?php echo $pagination; ?>
-</div>
-<?php endif; ?>
-<table border="0" class="data-table">
-	<th class="subsection-title" colspan="11">Fridges</th>
-	<tr>
+
+<table id="example" class="display table table-striped" cellspacing="0" width="100%">
+	
+	<thead>
+        <tr>
 		<th>Item Type</th> 
 		<th>Library Code</th>		
 		<th>PQS</th> 
@@ -18,6 +30,21 @@
 		<th>Refrigerant Gas Type</th>
 		<th>Action</th>
 	</tr>
+    </thead>
+ 
+    <tfoot>
+        <tr>
+		<th>Item Type</th> 
+		<th>Library Code</th>		
+		<th>PQS</th> 
+		<th>Model Name</th>  
+		<th>Manufacturer</th>
+		<th>Power Source</th>
+		<th>Refrigerant Gas Type</th>
+		<th>Action</th>
+	</tr>
+    </tfoot>
+	<tbody>
  <?php  
  foreach($fridges as $fridge){?>
  <tr>
@@ -60,10 +87,6 @@ if($fridge->Active == 1){
  ?>
 	 
  
-
+</tbody>
 </table> 
-<?php if (isset($pagination)): ?>
-<div style="width:450px; margin:0 auto 60px auto">
-<?php echo $pagination; ?>
 </div>
-<?php endif; ?>

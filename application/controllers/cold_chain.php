@@ -98,7 +98,7 @@ class Cold_Chain extends MY_Controller {
 			$counter++;
 		}
 
-		$chart = '<chart palette="1" bgColor="FFFFFF" plotGradientColor="" showAlternateHGridColor="0" showAlternateVGridColor="0" divLineAlpha="20" showBorder="0" decimals="2" caption="' . $title . '" xAxisName="Compartment" yAxisName="Capacity (Litres)" shownames="1" showvalues="0" showSum="1" overlapColumns="0" formatNumberScale="0" clickURL="' . base_url() . 'cold_chain/national_utilization_report">
+		$chart = '<chart palette="1" bgColor="FFFFFF" plotGradientColor="" useroundedges="1"  showAlternateHGridColor="0" showAlternateVGridColor="0" divLineAlpha="20" showBorder="0" decimals="2" caption="' . $title . '" xAxisName="Compartment" yAxisName="Capacity (Litres)" shownames="1" showvalues="0" showSum="1" overlapColumns="0" formatNumberScale="0" clickURL="' . base_url() . 'cold_chain/national_utilization_report">
 <categories>
 <category label="+4"/>
 <category label="-20"/>
@@ -344,7 +344,7 @@ class Cold_Chain extends MY_Controller {
 			$chart .= ' cylFillColor="07E007"';
 		}
 
-		$chart .= ' showBorder="0" showCanvasBase="1"  cylRadius="20" upperLimit="100" lowerLimit="0" tickMarkGap="5" numberSuffix="%" caption="Fridge Occupied">
+		$chart .= ' showBorder="0" showCanvasBase="1" useroundedges="1"  cylRadius="20" upperLimit="100" lowerLimit="0" tickMarkGap="5" numberSuffix="%" caption="Fridge Occupied">
 <value>' . $percentage_occupied . '</value>
 <annotations>
 <annotationGroup>
@@ -437,7 +437,7 @@ class Cold_Chain extends MY_Controller {
 		} else {
 			$chart .= ' cylFillColor="07E007"';
 		}
-		$chart .=  ' showBorder="0" showCanvasBase="1"  cylRadius="20" upperLimit="100" lowerLimit="0" tickMarkGap="5" numberSuffix="%" caption="% of Fridge Occupied">
+		$chart .=  ' showBorder="0" showCanvasBase="1" useroundedges="1"  cylRadius="20" upperLimit="100" lowerLimit="0" tickMarkGap="5" numberSuffix="%" caption="% of Fridge Occupied">
 <value>' . $percentage_occupied . '</value>
 <annotations>
 <annotationGroup>

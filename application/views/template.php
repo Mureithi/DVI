@@ -152,9 +152,9 @@ foreach($menus as $menu){?>
 if($identifier != "general_user")
 {
 ?>
-      <div class="container-fluid" style="margin-top:5%;font-weight: bold;font-size: 0.95em;">
+      <div class="container" style="margin-top:5%;font-weight: bold;font-size: 0.95em;" id="submenu">
       	
-      	<ul class="nav nav-justified">
+      	<ul class="nav nav-pills">
           
          <li> <a  class=" <?php
 if ($quick_link == "new_disbursement") {echo "quick_menu_active";

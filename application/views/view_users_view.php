@@ -1,20 +1,44 @@
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>DataTables/media/js/jquery.dataTables.js"></script>
+
+		
+		<style type="text/css" title="currentStyle">
+
+			@import "<?php echo base_url(); ?>DataTables/media/css/jquery.dataTables.css";
+			
+		</style>
+<script>
+	
+	$(document).ready(function() {
+    $('#example').dataTable();
+} );
+</script>
+<div class="container">
 <div class="quick_menu">
 <a class="quick_menu_link" href="<?php echo site_url("user_management/add");?>">New User</a>
 </div>
-<?php if (isset($pagination)): ?>
-<div style="width:450px; margin:0 auto 60px auto">
-<?php echo $pagination; ?>
-</div>
-<?php endif; ?>
-<table border="0" class="data-table">
-	<th class="subsection-title" colspan="11">Users</th>
-	<tr>
+
+<table id="example" class="display table table-striped" cellspacing="0" width="100%">
+	<thead>
+        <tr>
+		<th>Full Name <span class="glyphicon glyphicon-sort" style="margin-left: 60%"></span></th> 
+		<th>Username</th>		
+		<th>User Group</th> 
+		<th>Disabled?</th> 
+		<th>Action</th>
+	</tr>
+    </thead>
+ 
+    <tfoot>
+        <tr>
 		<th>Full Name</th> 
 		<th>Username</th>		
 		<th>User Group</th> 
 		<th>Disabled?</th> 
 		<th>Action</th>
 	</tr>
+    </tfoot>
+	<tbody>
+	
  <?php 
  foreach($users as $user){?>
  <tr>
@@ -49,10 +73,6 @@
  ?>
 	 
  
-
+	<tbody>
 </table> 
-<?php if (isset($pagination)): ?>
-<div style="width:450px; margin:0 auto 60px auto">
-<?php echo $pagination; ?>
 </div>
-<?php endif; ?>
